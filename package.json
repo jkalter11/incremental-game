@@ -4,7 +4,8 @@
   "description": "This project would have you reverse engineer a game that is text based, like [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
