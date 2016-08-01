@@ -5,10 +5,12 @@ import Root from './components/root.jsx'
 
 const App = {
   state: {
-    cookieCount: 0,
+    brickCount: 0,
     ovenCount: 0,
-    grandmaCount: 0,
+    workerCount: 0,
     totalGameTime:0,
+    alienCount: 0,
+    alienTransportCount: 0,
   },
 
   start(){
@@ -21,40 +23,65 @@ const App = {
   //   App.render();
   // },
 
-  addCookie(){
-    console.log('addCookie clicked')
-    App.state.cookieCount++;
-    App.render();
-  },
-
-  addGrandma(){
-    console.log('Im a grandma')
-    let grandmaCost = 20
-    if(App.state.cookieCount < grandmaCost) return;
-    App.state.cookieCount -= grandmaCost
-    App.state.ovenCount++;
-    App.state.grandmaCount++;
-    App.render();
-  },
-
-    addGameTime(){
-    console.log('GAME TIME')
+  addGameTime(){
     App.state.totalGameTime++;
     App.render();
   },
 
+// Click Based Income
+  addBrick(){
+    console.log('addCookie clicked')
+    App.state.brickCount++;
+    App.render();
+  },
+
+
+// Passive Income
+
+  addWorker(){
+    console.log('Im a grandma')
+    let workerCost = 20
+    if(App.state.brickCount < workerCost) return;
+    App.state.brickCount -= workerCost
+    App.state.workerCount++;
+    App.render();
+  },
+
   addOven(){
-    if (App.state.cookieCount < 10) return;
-    App.state.cookieCount -= 10
+    if (App.state.brickCount < 10) return;
+    App.state.brickCount -= 10
     App.state.ovenCount++;
     App.render();
   },
 
+  addAlien(){
+    console.log('Alien')
+    let alienCost = 100
+    if(App.state.brickCount < alienCost ) return;
+    App.state.brickCount -= alienCost
+    App.state.alienCount++;
+    App.render();
+},
+
+  addAlienTransport(){
+    console.log('Alien Transport')
+    let alienTransportCost = 300
+    if(App.state.brickCount < alienTransportCost ) return;
+    App.state.brickCount -= alienTransportCost
+    App.state.alienTransportCount++;
+    App.render();
+},
+
+
+// Time Based Income
+
   tick(){
     console.log('App tick')
-    App.state.cookieCount += (
+    App.state.brickCount += (
       (App.state.ovenCount * 10) +
-      (App.state.grandmaCount * 3) +
+      (App.state.workerCount * 3) + 
+      (App.state.alienCount * 15) + 
+      (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
       1
     )
 
@@ -66,6 +93,9 @@ const App = {
     App.state.totalGameTime += 1
     App.render();
   },
+
+// Multipliers
+
 
 
   render(){

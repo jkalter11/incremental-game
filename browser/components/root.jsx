@@ -5,7 +5,7 @@ export default class Root extends React.Component {
   render(){
     const { app } = this.props
     const { state } = app
-    var { cookieCount, grandmaCount, ovenCount, totalGameTime } = (this.props.app.state)
+    var { brickCount, workerCount, ovenCount, totalGameTime, alienCount, alienTransportCount } = (this.props.app.state)
     return <div>
       <Grid>
         <Row>
@@ -14,17 +14,20 @@ export default class Root extends React.Component {
         <Row>
           <Column width="1/4">
             <h2>Stats</h2>
-            <p>Total Cookies: { cookieCount }</p>
-            <p>Total Ovens: { ovenCount }</p>
-            <p>Total Grandma's: { grandmaCount }</p>
+            <p>Total Bricks: { brickCount }</p>
+            <p>Total Workers: { workerCount }</p>
+             <p>Total Alien Workers: { alienCount }</p>
+             <p>Total Alien Transport: { alienTransportCount }</p>
             <p>Total Game Time: { totalGameTime }</p>
-            <CookieButton  onClick={app.addCookie} />
+
+            <BrickButton  onClick={app.addBrick} />
           </Column>
           <Column width="3/4">
           <Row className="row">
             <Column width="3/4">
-              <h4>Ovens</h4> 
-              <p>Cost 20 Cookies to create and produce 10 Cookies/Sec</p>
+              <h4>Ovens</h4>
+              <p>You currently have: { ovenCount }</p> 
+              <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
             </Column>
             <Column width="1/4">
               <button onClick={app.addOven}>Buy an Oven</button>
@@ -32,11 +35,31 @@ export default class Root extends React.Component {
           </Row>
           <Row className="row">
             <Column width="3/4">
-              <h4>Grandma's</h4> 
-              <p>Cost 20 Cookies to create and Produce 3 Cookies/Sec. They also come with a free oven!</p>
+              <h4>Workers</h4> 
+              <p>Cost 20 Cookies to create and Produce 3 Cookies/Sec.</p>
             </Column>
             <Column width="1/4">
-              <button onClick={app.addGrandma}>Add a Grandma</button>
+              <button onClick={app.addWorker}>Hire a Worker</button>
+            </Column>
+          </Row>
+
+          <Row className="row">
+            <Column width="3/4">
+              <h4>Alien Workers</h4> 
+              <p>Cost 100 Bricks, gives you 15 bricks/second </p>
+            </Column>
+            <Column width="1/4">
+              <button onClick={app.addAlien}>Hire an Alien</button>
+            </Column>
+          </Row>
+
+          <Row className="row">
+            <Column width="3/4">
+              <h4>Alien Transport</h4> 
+              <p>Cost 300 Bricks, increases alien productivity by 20%</p>
+            </Column>
+            <Column width="1/4">
+              <button onClick={app.addAlienTransport}>Buy an Alien Transport</button>
             </Column>
           </Row>
           </Column>
@@ -47,7 +70,7 @@ export default class Root extends React.Component {
 }
 
 
-class CookieButton extends React.Component {
+class BrickButton extends React.Component {
   render(){
     return <button {...this.props}>
         <img src="http://pngimg.com/upload/brick_PNG3324.png" height={100} />
