@@ -12,6 +12,7 @@ This is important because creating this game would allow you to focus mainly on 
 
 - [ ] As a user, I can save the game.
 - [ ] As a user, I can reload my game data.
+- [ ] I can click a thing to get more income.
 - [ ] As a user, I can "buy" items that increase the counter rate.
 - [ ] As a user, I can see the amount of "currency" I have.
 - [ ] The game increases currency acumulation rate depending on what items you have.
