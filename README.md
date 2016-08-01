@@ -6,7 +6,7 @@ This project would have you reverse engineer a game that is text based, like [Co
 
 ## Context
 
-This is important because creating this game would allow you to focus mainly on an interactive language and how it interacts with the elements on the page, which change over time. You would learn how the functionality of certain parts of the code depend on each other. 
+This is important because creating this game would allow you to focus mainly on an interactive language and how it interacts with the elements on the page, which change over time. You would learn how the functionality of certain parts of the code depend on each other.
 
 ## Specifications
 
@@ -35,3 +35,21 @@ This is important because creating this game would allow you to focus mainly on 
 <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 [mit-license]: https://opensource.org/licenses/MIT
+
+
+## Development
+
+```
+# setup
+npm install
+```
+
+```
+# run the web server
+nodemon index.js
+```
+
+```
+# run webpack watch
+webpack -w
+```
