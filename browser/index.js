@@ -29,8 +29,9 @@ const App = {
 
   addGrandma(){
     console.log('Im a grandma')
-    if(App.state.cookieCount < 20) return;
-    App.state.cookieCount -= 20
+    let grandmaCost = 20
+    if(App.state.cookieCount < grandmaCost) return;
+    App.state.cookieCount -= grandmaCost
     App.state.ovenCount++;
     App.state.grandmaCount++;
     App.render();
@@ -56,6 +57,7 @@ const App = {
       (App.state.grandmaCount * 3) +
       1
     )
+
     App.render();
   },
 
