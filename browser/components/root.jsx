@@ -1,6 +1,8 @@
 import React from 'react'
 import {Grid, Row, Column} from 'react-cellblock';
 
+//import ItemRow from "./worker.js";
+
 export default class Root extends React.Component {
   render(){
     const { app } = this.props
@@ -24,16 +26,7 @@ export default class Root extends React.Component {
             <BrickButton  onClick={app.addBrick} />
           </Column>
           <Column width="3/4">
-            <Row className="row">
-              <Column width="3/4">
-                <h4>Ovens</h4>
-                <p>You currently have: { ovenCount }</p> 
-                <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
-              </Column>
-              <Column width="1/4">
-                <button onClick={app.addOven}>Buy an Oven</button>
-              </Column>
-            </Row>
+            <ItemRow ovenCount={ovenCount}  />
           </Column>
         </Row>
       </Grid>
@@ -51,8 +44,16 @@ class BrickButton extends React.Component {
 
 class ItemRow extends React.Component{
   render(){
-
-    return 
+    return <Row className="row">
+      <Column width="3/4">
+        <h4>Ovens</h4>
+        <p>You currently have: {this.props.ovenCount} </p> 
+        <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
+      </Column>
+      <Column width="1/4">
+        <button>Buy an Oven</button>
+      </Column>
+    </Row>
   }
 }
 
