@@ -5,11 +5,15 @@ export default class Root extends React.Component {
   render(){
     const { app } = this.props
     const { state } = app
+    const timeElapsed = (new Date).getTime() - state.startedAt;
     var { brickCount, workerCount, ovenCount, totalGameTime, alienCount, alienTransportCount } = (this.props.app.state)
     return <div>
       <Grid>
         <Row>
           <h1>BrickLayer</h1>
+        </Row>
+        <Row>
+          <div>{timeElapsed} seconds</div>
         </Row>
         <Row>
           <Column width="1/4">
@@ -36,7 +40,7 @@ export default class Root extends React.Component {
           <Row className="row">
             <Column width="3/4">
               <h4>Workers</h4> 
-              <p>Cost 20 Cookies to create and Produce 3 Cookies/Sec.</p>
+              <p>Cost 20 bricks to create and Produce 3 bricks/Sec.</p>
             </Column>
             <Column width="1/4">
               <button onClick={app.addWorker}>Hire a Worker</button>
