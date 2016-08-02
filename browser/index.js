@@ -11,12 +11,35 @@ import Root from './components/root.jsx'
 //   saveState(storeGame.getState());
 // });
 
+
+
+
 const App = {
   start(){
     App.load();
     setInterval(App.tick, 1000)
     App.render();
   },
+
+  employees() {[{
+      employeesTitle: 'Basic Worker',
+      employeesCost: 20,
+      employeesCostovertime: 1.5,
+      employeesNumber: App.state.workerCount,
+      employeesProductionRate: '3 bricks per second',
+      employeesImg: 'TBD'
+      }, 
+     
+     {
+      employeesTitle: 'Alien Worker',
+      employeesCost: 100,
+      employeesCostovertime: 1.5,
+      employeesNumber: App.state.alienCount,
+      employeesProductionRate: '15 bricks per second',
+      employeesImg: 'TBD'
+      }
+
+  ]},
 
   reset(){
     delete localStorage.state
@@ -61,7 +84,7 @@ const App = {
 // Passive Income
 
   addWorker(){
-    console.log('Im a grandma')
+    console.log('Hire a worker')
     let workerCost = 20
     if(App.state.brickCount < workerCost) return;
     App.state.brickCount -= workerCost
