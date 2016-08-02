@@ -2,21 +2,43 @@ require('./index.sass')
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from './components/root.jsx'
+// import { loadState, saveState } from './localStorage';  
+
+// const persistedState = loadState();
+// const storeGame = createStore(App.state);
+
+// storeGame.subscribe(() => {
+//   saveState(storeGame.getState());
+// });
 
 const App = {
-  state: {
-    brickCount: 0,
-    ovenCount: 0,
-    workerCount: 0,
-    totalGameTime:0,
-    alienCount: 0,
-    alienTransportCount: 0,
-  },
-
   start(){
-    setInterval(App.tick.bind(this), 1000)
+    App.load();
+    setInterval(App.tick, 1000)
     App.render();
   },
+
+  reset(){
+    delete localStorage.state
+    App.load()
+  },
+
+  load(){
+    App.state = localStorage.state ? 
+      JSON.parse(localStorage.state) : {
+      startedAt: (new Date).getTime(),
+      brickCount: 0,
+      ovenCount: 0,
+      workerCount: 0,
+      totalGameTime:0,
+      alienCount: 0,
+      alienTransportCount: 0,
+    };
+  },
+
+  save(){
+    localStorage.state = JSON.stringify(App.state);
+  },  
 
   // startTock(){
   //   setInterval(App.tock.bind(this), 1000)
@@ -61,7 +83,7 @@ const App = {
     App.state.brickCount -= alienCost
     App.state.alienCount++;
     App.render();
-},
+  },
 
   addAlienTransport(){
     console.log('Alien Transport')
@@ -70,7 +92,7 @@ const App = {
     App.state.brickCount -= alienTransportCost
     App.state.alienTransportCount++;
     App.render();
-},
+  },
 
 
 // Time Based Income
@@ -84,15 +106,15 @@ const App = {
       (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
       1
     )
-
+    App.save();
     App.render();
   },
 
-  tock(){
-    console.log('App tock')
-    App.state.totalGameTime += 1
-    App.render();
-  },
+  // tock(){
+  //   console.log('App tock')
+  //   App.state.totalGameTime += 1
+  //   App.render();
+  // },
 
 // Multipliers
 
@@ -102,6 +124,8 @@ const App = {
     ReactDOM.render(<Root app={App} />, document.querySelector('main'))
   }
 }
+
+window.App = App 
 
 App.start();
 
