@@ -44,6 +44,7 @@
     "react-cellblock": "^2.0.0",
     "react-image": "^0.1.0",
     "react-localstorage": "^0.3.0",
+    "react-tabs": "^0.7.0",
     "webpack-dev-server": "^1.14.1"
   }
 }

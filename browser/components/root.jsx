@@ -1,5 +1,6 @@
 import React from 'react'
 import {Grid, Row, Column} from 'react-cellblock';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //import ItemRow from "./worker.js";
 
@@ -93,19 +94,50 @@ class BodyRow extends React.Component {
   render(){
 
     return (
-        <Row>
-          <Column width="1/4">
-            <BrickColumn clickHandler={this.props.clickHandler} />
-          </Column>
-          <Column width="3/4">
-            {this.employeeRows()}
-          </Column> 
-        </Row>
+     <Tabs>  
+      <TabList> 
+        <Tab> Workers </Tab>
+        <Tab> Transports </Tab> 
+        <Tab> Pictures </Tab> 
+      </TabList> 
+         <TabPanel> 
+            <Row>
+              <Column width="1/4">
+                <BrickColumn clickHandler={this.props.clickHandler} />
+              </Column>
+              <Column width="3/4">
+                {this.employeeRows()}
+              </Column> 
+            </Row>
+        </TabPanel>
+           <TabPanel> 
+            <Row>
+              <Column width="1/4">
+                <p> Transport </p> 
+              </Column>
+              <Column width="3/4">
+               <p> Goodbye! </p> 
+              </Column> 
+            </Row>
+        </TabPanel>
+           <TabPanel> 
+            <Row>
+              <Column width="1/4">
+                <p> Pictures </p> 
+              </Column>
+              <Column width="3/4">
+               <p> Goodbye! </p> 
+              </Column> 
+            </Row>
+        </TabPanel>
+
+    </Tabs>  
       )
   }
 }
 
 export default class Root extends React.Component {
+
   render(){ 
     const { app } = this.props
     const bps = 0
