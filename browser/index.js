@@ -111,18 +111,18 @@ const App = {
 
 // Time Based Income
 
-  tick(){
-    console.log('App tick')
-    App.state.brickCount += (
-      (App.state.ovenCount * 10) +
-      (App.state.workerCount * 3) + 
-      (App.state.alienCount * 15) + 
-      (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
-      1
-    )
-    App.save();
-    App.render();
-  },
+  // tick(){
+  //   console.log('App tick')
+  //   App.state.brickCount += (
+  //     (App.state.ovenCount * 10) +
+  //     (App.state.workerCount * 3) + 
+  //     (App.state.alienCount * 15) + 
+  //     (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
+  //     1
+  //   )
+  //   App.save();
+  //   App.render();
+  // },
 
 
 // Multipliers

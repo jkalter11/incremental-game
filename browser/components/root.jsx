@@ -50,7 +50,7 @@ class ItemRow extends React.Component{
     return <Row className="row">
       <Column width="3/4">
         <h4>Ovens</h4>
-        <p>You currently have: {this.props.employee} </p> 
+        <p>You currently have:  </p> 
         <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
       </Column>
       <Column width="1/4">
