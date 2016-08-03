@@ -1,6 +1,5 @@
 import React from 'react'
 import {Grid, Row, Column} from 'react-cellblock';
-
 //import ItemRow from "./worker.js";
 
 export default class Root extends React.Component {
@@ -23,7 +22,7 @@ export default class Root extends React.Component {
              <p>Total Alien Workers: { alienCount }</p>
              <p>Total Alien Transport: { alienTransportCount }</p>
             <p>Total Game Time: { totalGameTime }</p>
-            <BrickButton  onClick={app.addBrick} />
+            <BrickButton onClick={app.addBrick} />
           </Column>
           <Column width="3/4">
             <ItemRow ovenCount={ovenCount}  />
@@ -37,7 +36,7 @@ export default class Root extends React.Component {
 class BrickButton extends React.Component {
   render(){
     return <button {...this.props}>
-        <img src="http://pngimg.com/upload/brick_PNG3324.png" height={100} />
+        <img src='#' height={100} />
       </button>
   }
 }
