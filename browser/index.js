@@ -13,21 +13,23 @@ const App = {
 
   employees() {
     return [{
-      employeeTitle: 'Basic Worker',
-      employeeCost: 20,
-      employeeCostovertime: 1.5,
-      employeeNumber: App.state.workerCount,
-      employeeProductionRate: '3 bricks per second',
-      employeeImg: 'TBD'
+      title: 'Basic Worker',
+      cost: 20,
+      costIncrease: 1.5,
+      totalNumber: App.state.workerCount,
+      productionRate: '3 bricks per second',
+      desc: 'Solid, sturdy and dependable, these workers are your bread and butter.',
+      img: 'TBD'
       }, 
      
      {
-      employeeTitle: 'Alien Worker',
-      employeeCost: 100,
-      employeeCostovertime: 1.5,
-      employeeNumber: App.state.alienCount,
-      employeeProductionRate: '15 bricks per second',
-      employeeImg: 'TBD'
+      title: 'Alien Worker',
+      cost: 100,
+      costIncrease: 1.5,
+      totalNumber: App.state.alienCount,
+      productionRate: '15 bricks per second',
+      desc: 'Once the aliens realized what an amazing builder-of-things you were, some decided to come help you.',
+      img: 'TBD'
       }
 
     ]},
