@@ -2,16 +2,6 @@ require('./index.sass')
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from './components/root.jsx'
-// import { loadState, saveState } from './localStorage';  
-
-// const persistedState = loadState();
-// const storeGame = createStore(App.state);
-
-// storeGame.subscribe(() => {
-//   saveState(storeGame.getState());
-// });
-
-
 
 
 const App = {
@@ -21,25 +11,26 @@ const App = {
     App.render();
   },
 
-  employees() {[{
-      employeesTitle: 'Basic Worker',
-      employeesCost: 20,
-      employeesCostovertime: 1.5,
-      employeesNumber: App.state.workerCount,
-      employeesProductionRate: '3 bricks per second',
-      employeesImg: 'TBD'
+  employee() {
+    [{
+      employeeTitle: 'Basic Worker',
+      employeeCost: 20,
+      employeeCostovertime: 1.5,
+      employeeNumber: App.state.workerCount,
+      employeeProductionRate: '3 bricks per second',
+      employeeImg: 'TBD'
       }, 
      
      {
-      employeesTitle: 'Alien Worker',
-      employeesCost: 100,
-      employeesCostovertime: 1.5,
-      employeesNumber: App.state.alienCount,
-      employeesProductionRate: '15 bricks per second',
-      employeesImg: 'TBD'
+      employeeTitle: 'Alien Worker',
+      employeeCost: 100,
+      employeeCostovertime: 1.5,
+      employeeNumber: App.state.alienCount,
+      employeeProductionRate: '15 bricks per second',
+      employeeImg: 'TBD'
       }
 
-  ]},
+    ]},
 
   reset(){
     delete localStorage.state
@@ -133,11 +124,6 @@ const App = {
     App.render();
   },
 
-  // tock(){
-  //   console.log('App tock')
-  //   App.state.totalGameTime += 1
-  //   App.render();
-  // },
 
 // Multipliers
 

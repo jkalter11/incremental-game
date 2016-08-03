@@ -7,7 +7,7 @@ export default class Root extends React.Component {
     const { app } = this.props
     const { state } = app
     const timeElapsed = (new Date).getTime() - state.startedAt;
-    var { brickCount, workerCount, ovenCount, totalGameTime, alienCount, alienTransportCount } = (this.props.app.state)
+    var { employee, brickCount, workerCount, ovenCount, totalGameTime, alienCount, alienTransportCount } = (this.props.app.state)
     return <div>
       <Grid>
         <Row>
@@ -26,7 +26,7 @@ export default class Root extends React.Component {
           </Column>
           <Column width="3/4">
            
-            <ItemRow ovenCount={ovenCount}  />
+            <ItemRow ovenCount={employee}  />
           </Column>
         </Row>
       </Grid>
@@ -50,7 +50,7 @@ class ItemRow extends React.Component{
     return <Row className="row">
       <Column width="3/4">
         <h4>Ovens</h4>
-        <p>You currently have: {this.props.ovenCount} </p> 
+        <p>You currently have: {this.props.employee} </p> 
         <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
       </Column>
       <Column width="1/4">
