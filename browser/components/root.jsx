@@ -25,6 +25,7 @@ export default class Root extends React.Component {
             <BrickButton onClick={app.addBrick} />
           </Column>
           <Column width="3/4">
+           
             <ItemRow ovenCount={ovenCount}  />
           </Column>
         </Row>
@@ -36,10 +37,13 @@ export default class Root extends React.Component {
 class BrickButton extends React.Component {
   render(){
     return <button {...this.props}>
-        <img src='#' height={100} />
+        <img src={'../img/brick.png'} height={100} />
+        <img src={'../img/Alien.png'} height={50}  />
       </button>
   }
 }
+
+
 
 class ItemRow extends React.Component{
   render(){
@@ -56,6 +60,19 @@ class ItemRow extends React.Component{
   }
 }
 
+
+
+// var App = React.createClass({
+//   imgs:[
+//     "/img/brick.png",
+//     "/img/Alien.png"
+//   ],
+//   render: function(){
+//     return(
+//       <Img alt="Alien!" srcset={this.imgs.join(', ')} />
+//       );
+//   }
+// });
 
   // <Row>
   //         <Column width="1/4">
