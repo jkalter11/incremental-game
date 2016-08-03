@@ -113,7 +113,8 @@ class BodyRow extends React.Component {
            <TabPanel> 
             <Row>
               <Column width="1/4">
-                <p> Transport </p> 
+                <p> Transport </p>
+                <p> <img src={'../img/ufo.png'} width={100}/> </p> 
               </Column>
               <Column width="3/4">
                <p> Goodbye! </p> 
@@ -130,7 +131,6 @@ class BodyRow extends React.Component {
               </Column> 
             </Row>
         </TabPanel>
-
     </Tabs>  
       )
   }
