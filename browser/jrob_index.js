@@ -4,6 +4,32 @@ import ReactDOM from 'react-dom'
 import Root from './components/root.jsx'
 
 
+class BrickApp {
+  constructor() {
+    this.data = {
+      bps: 1000,
+      headerInfo: {
+        totalBricks: 5,
+        bps: 100
+      }
+    }
+
+    setInterval( this.tick.bind( this ), 1000 )
+    this.render()
+  }
+
+  tick() {
+    console.log( "I'm ticking", this.data.headerInfo.bps )
+    this.data.headerInfo.bps = this.data.headerInfo.bps + 1
+    this.render()
+  }
+
+  render() {
+    console.log( 'BrickApp.render' )
+    ReactDOM.render(<Root {...this.data} />, document.querySelector('main'))
+  }
+}
+
 const App = {
   start(){
     App.load();
@@ -11,8 +37,8 @@ const App = {
     App.render();
   },
 
-  employees() {
-    return [{
+  employee() {
+    [{
       employeeTitle: 'Basic Worker',
       employeeCost: 20,
       employeeCostovertime: 1.5,
@@ -29,8 +55,8 @@ const App = {
       employeeProductionRate: '15 bricks per second',
       employeeImg: 'TBD'
       }
-
-    ]},
+    ]
+  },
 
   reset(){
     delete localStorage.state
@@ -47,7 +73,6 @@ const App = {
       totalGameTime:0,
       alienCount: 0,
       alienTransportCount: 0,
-      employees: []
     };
   },
 
@@ -112,19 +137,18 @@ const App = {
 
 // Time Based Income
 
-  tick(){
-    console.log('App tick')
-    App.state.brickCount += (
-      (App.state.ovenCount * 10) +
-      (App.state.workerCount * 3) + 
-      (App.state.alienCount * 15) + 
-      (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
-      1
-    )
-    App.state.employees = App.employees()
-    App.save();
-    App.render();
-  },
+  // tick(){
+  //   console.log('App tick')
+  //   App.state.brickCount += (
+  //     (App.state.ovenCount * 10) +
+  //     (App.state.workerCount * 3) + 
+  //     (App.state.alienCount * 15) + 
+  //     (App.state.alienTransportCount * (App.state.alienCount * 1.2)) +
+  //     1
+  //   )
+  //   App.save();
+  //   App.render();
+  // },
 
 
 // Multipliers
@@ -136,9 +160,12 @@ const App = {
   }
 }
 
-window.App = App 
+// window.App = App 
 
-App.start();
+// App.start();
+
+window.BrickApp = BrickApp
+const app = new BrickApp()
 
 console.log('browser.js here')
 
