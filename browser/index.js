@@ -73,8 +73,9 @@ const App = {
     App.state = localStorage.state ? 
       JSON.parse(localStorage.state) : {
       startedAt: (new Date).getTime(),
-      brickCount: 500,
+      brickCount: 0,
       ovenCount: 0,
+      pickAxeCount: 0,
       workerCount: 0,
       totalGameTime:0,
       alienCount: 0,
@@ -89,10 +90,6 @@ const App = {
     localStorage.state = JSON.stringify(App.state);
   },  
 
-  // startTock(){
-  //   setInterval(App.tock.bind(this), 1000)
-  //   App.render();
-  // },
 
   addGameTime(){
     App.state.totalGameTime++;
@@ -100,11 +97,13 @@ const App = {
   },
 
 // Click Based Income
-  addBrick(){
-    console.log('addCookie clicked')
-    App.state.brickCount++;
-    App.render();
-  },
+
+  // BPC:1,
+  // addBrick(){
+  //   console.log('addBrick clicked')
+  //   App.state.brickCount + BPC;
+  //   App.render();
+  // },
 
 
 // Passive Income
@@ -145,13 +144,23 @@ const App = {
     App.render();
   },
 
-  
-  addOven(){
-    if (App.state.brickCount < 10) return;
-    App.state.brickCount -= 10
-    App.state.ovenCount++;
-    App.render();
-  },
+  // pickAxeCost: 250,
+  // addPickAxe(){
+  //   console.log('Pick Axe')
+  //   if (App.state.brickCount < App.pickAxeCost ) return;
+  //   App.state.brickCount -= App.pickAxeCost
+  //   App.state.pickAxeCount++;
+  //   App.render();
+  // },
+
+  // ovenCost: 500, 
+  // addOven(){
+  //   console.log('Oven')
+  //   if (App.state.brickCount < App.ovenCost ) return;
+  //   App.state.brickCount -= App.ovenCost
+  //   App.state.ovenCount++;
+  //   App.render();
+  // },
 
 
 // Time Based Income
@@ -159,11 +168,16 @@ const App = {
   bricksPerSecond(){
     const s = App.state;
     const workerBPS = Math.round(
-      (s.workerCount * 5) + ((s.workerCount * 5) * (s.redTruckCount * 0.2))
+      (s.workerCount * 5) + ((s.workerCount * 5) * (s
+
+        .redTruckCount * 0.2))
     )
     const alienBPS = Math.round(
       (s.alienCount * 15) + ((s.alienCount * 15) * (s.alienTransportCount * 0.5))
     )
+
+    // const bricksPerClick = (BPC + (s.ovenCount * 3) + (s.pickAxeCount * 5))
+
     return 1 + workerBPS + alienBPS;
 
     // App.state.brickCount += (
