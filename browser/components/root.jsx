@@ -137,6 +137,7 @@ function BodyRow(props){
           </TabPanel>
           <TabPanel>
             <p> Tools <img src={'../img/oven.jpeg'} width={100}/></p>
+            <ToolsTab app={app}/>
           </TabPanel>
         </Tabs>
       </Column> 
@@ -182,6 +183,23 @@ function TransportsTab(props){
   </div>
 }
 
+function ToolsTab(props){
+  const {app} = props;
+  return <div>
+    <ItemDescription 
+      name="Oven"       
+      owned={App.state.ovenCount}          
+      cost={App.ovenCost} 
+      onPurchase={app.addOven} 
+    />
+    <ItemDescription 
+      name="Pick Axe" 
+      owned={App.state.pickAxeCount}    
+      cost={App.pickAxeCost}    
+      onPurchase={app.addPickAxe} 
+    />
+  </div>
+}
 
 function ItemDescription(props){
   return <div>

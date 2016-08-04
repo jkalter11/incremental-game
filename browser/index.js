@@ -73,7 +73,7 @@ const App = {
     App.state = localStorage.state ? 
       JSON.parse(localStorage.state) : {
       startedAt: (new Date).getTime(),
-      brickCount: 0,
+      brickCount: 1000,
       ovenCount: 0,
       pickAxeCount: 0,
       workerCount: 0,
@@ -98,12 +98,12 @@ const App = {
 
 // Click Based Income
 
-  // BPC:1,
-  // addBrick(){
-  //   console.log('addBrick clicked')
-  //   App.state.brickCount + BPC;
-  //   App.render();
-  // },
+  bpc:1,
+  addBrick(){
+    console.log('addBrick clicked')
+    App.state.brickCount + BPC;
+    App.render();
+  },
 
 
 // Passive Income
@@ -144,29 +144,30 @@ const App = {
     App.render();
   },
 
-  // pickAxeCost: 250,
-  // addPickAxe(){
-  //   console.log('Pick Axe')
-  //   if (App.state.brickCount < App.pickAxeCost ) return;
-  //   App.state.brickCount -= App.pickAxeCost
-  //   App.state.pickAxeCount++;
-  //   App.render();
-  // },
+  pickAxeCost: 250,
+  addPickAxe(){
+    console.log('Pick Axe')
+    if (App.state.brickCount < App.pickAxeCost ) return;
+    App.state.brickCount -= App.pickAxeCost
+    App.state.pickAxeCount++;
+    App.render();
+  },
 
-  // ovenCost: 500, 
-  // addOven(){
-  //   console.log('Oven')
-  //   if (App.state.brickCount < App.ovenCost ) return;
-  //   App.state.brickCount -= App.ovenCost
-  //   App.state.ovenCount++;
-  //   App.render();
-  // },
+  ovenCost: 500, 
+  addOven(){
+    console.log('Oven')
+    if (App.state.brickCount < App.ovenCost ) return;
+    App.state.brickCount -= App.ovenCost
+    App.state.ovenCount++;
+    App.render();
+  },
 
 
 // Time Based Income
 
   bricksPerSecond(){
     const s = App.state;
+    const bpc = App.bpc;
     const workerBPS = Math.round(
       (s.workerCount * 5) + ((s.workerCount * 5) * (s
 
@@ -176,7 +177,7 @@ const App = {
       (s.alienCount * 15) + ((s.alienCount * 15) * (s.alienTransportCount * 0.5))
     )
 
-    // const bricksPerClick = (BPC + (s.ovenCount * 3) + (s.pickAxeCount * 5))
+    const bricksPerClick = (bpc + (s.ovenCount * 3) + (s.pickAxeCount * 5))
 
     return 1 + workerBPS + alienBPS;
 
