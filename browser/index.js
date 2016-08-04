@@ -16,51 +16,14 @@ const App = {
     clearTimeout(App.timeout)
   },
 
-  // employees() {
-  //   return [
-  //     {
-  //       title: 'Basic Worker',
-  //       cost: 20,
-  //       costIncrease: 1.5,
-  //       totalNumber: App.state.workerCount,
-  //       productionRate: '3 bricks per second',
-  //       desc: 'Solid, sturdy and dependable, these workers are your bread and butter.',
-  //       img: 'TBD'
-  //     }, 
-       
-  //     {
-  //       title: 'Alien Worker',
-  //       cost: 100,
-  //       costIncrease: 1.5,
-  //       totalNumber: App.state.alienCount,
-  //       productionRate: '15 bricks per second',
-  //       desc: 'Once the aliens realized what an amazing builder-of-things you were, some decided to come help you.',
-  //       img: 'TBD'
-  //     }
-  //   ];
-  // },
-
-  // transports() {
-  //   return [{
-  //     title: 'Red Truck',
-  //     cost: 50,
-  //     costIncrease: 3.0,
-  //     totalNumber: App.state.redTruckCount,
-  //     productionRate: '10 bricks per second',
-  //     desc: 'This Truck will get your production rate going through the roof!',
-  //     img: 'TBD'
-  //     }, 
-     
-  //   {
-  //     title: 'Insanity Inducing Spaceship',
-  //     cost: 1000,
-  //     costIncrease: 6.0,
-  //     totalNumber: App.state.alienTransportCount,
-  //     productionRate: '100 bricks per second',
-  //     desc: 'Aliens need spaceships to build... if you have aliens, then you probably need spaceships.',
-  //     img: 'TBD'
-  //     }
-
+  // itemDetails(){ 
+  //   [
+  //     alienDesc: "Who knew aliens would love building with rocks so much?",
+  //     workerDesc: "Reliable and sturdy, workers save the day.",
+  //     ovenDesc: "",
+  //     pickAxeDesc: "Diging up stuff faster means I can make bricks faster, right?",
+  //     redTruckDesc: "How do you make buildings faster? You get there faster.",
+  //     alienShipDesc: "Aliens are zooming everywhere."
   //   ]
   // },
 
@@ -101,7 +64,7 @@ const App = {
   bpc:1,
   addBrick(){
     console.log('addBrick clicked')
-    App.state.brickCount + BPC;
+    App.state.brickCount = App.state.brickCount + App.bpc;
     App.render();
   },
 
@@ -180,18 +143,6 @@ const App = {
     const bricksPerClick = (bpc + (s.ovenCount * 3) + (s.pickAxeCount * 5))
 
     return 1 + workerBPS + alienBPS;
-
-    // App.state.brickCount += (
-    //   (App.state.ovenCount * 10) +
-    //   (App.state.workerCount * 3) + 
-    //   // (
-    //   //   (App.state.alienCount * 15) + 0
-    //   //   // (App.state.alienCount * 15) * (App.state.alienTransportCount * 0.2)
-    //   // ) + 
-    //   // // (App.state.alienTransportCount * (alienProductionRate * 1.5)) +
-    //   (App.state.redTruckCount * (workerProductionRate * 1.2)) +
-    //   1
-    // )
   },
 
   tick(){

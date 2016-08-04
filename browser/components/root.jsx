@@ -68,10 +68,10 @@ class PlayerStats extends React.Component {
     return (
       <div>
         <Column width="1/2">
-          <h4> Total Bricks: {this.props.brickCount}</h4>
+          <p> Total Bricks: {this.props.brickCount}</p>
         </Column>
         <Column width="1/2">
-          <h4> Bricks Per Second: {this.props.bps}</h4>
+          <p> Bricks Per Second: {this.props.bps}</p>
         </Column>
       </div>
     )
@@ -81,7 +81,7 @@ class PlayerStats extends React.Component {
 
 class BrickLogo extends React.Component {
   render(){
-    return <h1>Click A Brick</h1> 
+    return (<h1>Click A Brick</h1> )
   }
 }
 
@@ -106,9 +106,13 @@ class CopyrightInfo extends React.Component {
 
 class BrickButton extends React.Component {
   render(){
-    return <a href="javascript: void(null)" onClick={this.props.onClick}>
-      <img className="brickButton" src={'../img/brick.png'} width={'100'}/> 
-    </a>
+    return (
+      <div className="brickButton">
+        <a href="javascript: void(null)" onClick={this.props.onClick}>
+          <img src='/img/brick.png' /> 
+        </a>
+      </div>
+    )
   }
 }
 
@@ -124,19 +128,17 @@ function BodyRow(props){
       <Column width="3/4">
         <Tabs>
           <TabList> 
-            <Tab> Workers </Tab>
-            <Tab> Transports </Tab> 
-            <Tab> Tools </Tab> 
+            <Tab className="tab"> Workers </Tab>
+            <Tab className="tab"> Transports </Tab> 
+            <Tab className="tab"> Tools </Tab> 
           </TabList> 
           <TabPanel>
             <WorkersTab app={app}/>
           </TabPanel>
           <TabPanel>
-            <p> Transport <img src={'../img/ufo.png'} width={100}/></p>
             <TransportsTab app={app}/>
           </TabPanel>
           <TabPanel>
-            <p> Tools <img src={'../img/oven.jpeg'} width={100}/></p>
             <ToolsTab app={app}/>
           </TabPanel>
         </Tabs>
@@ -155,12 +157,14 @@ function WorkersTab(props){
       owned={App.state.workerCount}            
       cost={App.workerCost}   
       onPurchase={app.addWorker} 
+      desc="Reliable and sturdy, workers save the day."
     />
     <ItemDescription 
       name="Alien"           
       owned={App.state.alienCount}             
       cost={App.alienCost}    
       onPurchase={app.addAlien} 
+      desc="Who knew aliens would love building with rocks so much?"
     />
   </div>
 }
@@ -173,12 +177,14 @@ function TransportsTab(props){
       owned={App.state.redTruckCount}          
       cost={App.redTruckCost} 
       onPurchase={app.addRedTruck} 
+      desc="How do you make buildings faster? You get there faster."
     />
     <ItemDescription 
       name="Alien Transport" 
       owned={App.state.alienTransportCount}    
       cost={App.alienTransportCost}    
       onPurchase={app.addAlienTransport} 
+      desc="Aliens are zooming everywhere."
     />
   </div>
 }
@@ -191,23 +197,32 @@ function ToolsTab(props){
       owned={App.state.ovenCount}          
       cost={App.ovenCost} 
       onPurchase={app.addOven} 
+      desc="Brick bakers bake a brick."
     />
     <ItemDescription 
       name="Pick Axe" 
       owned={App.state.pickAxeCount}    
       cost={App.pickAxeCost}    
       onPurchase={app.addPickAxe} 
+      desc="Diging up stuff faster means I can make bricks faster, right?"
     />
   </div>
 }
 
 function ItemDescription(props){
-  return <div>
-    <h3>{props.name}</h3>
-    <div>Owned: {props.owned}</div>
-    <div>Cost: {props.cost}</div>
-    <div><a href="javascript: void(null)" onClick={props.onPurchase}>buy</a></div>
-  </div>
+  return (
+    <Row>
+      <Column width="3/4">
+        <h3>{props.name}</h3>
+        <div>Owned: {props.owned}</div>
+        <div>Cost: {props.cost}</div>
+        <div>{props.desc}</div>
+      </Column>
+      <Column width="1/4">
+        <div><button onClick={props.onPurchase}>buy</button></div>
+      </Column>
+    </Row>
+  )
 }
 
 
@@ -278,54 +293,3 @@ function ItemDescription(props){
 // //       );
 // //   }
 // // });
-
-//   // <Row>
-//   //         <Column width="1/4">
-//   //           <h2>Stats</h2>
-//   //           <p>Total Bricks: { brickCount }</p>
-//   //           <p>Total Workers: { workerCount }</p>
-//   //            <p>Total Alien Workers: { alienCount }</p>
-//   //            <p>Total Alien Transport: { alienTransportCount }</p>
-//   //           <p>Total Game Time: { totalGameTime }</p>
-//   //           <BrickButton  onClick={app.addBrick} />
-//   //         </Column>
-//   //         <Column width="3/4">
-//   //         <Row className="row">
-//   //           <Column width="3/4">
-//   //             <h4>Ovens</h4>
-//   //             <p>You currently have: { ovenCount }</p> 
-//   //             <p>Cost 20 bricks to create and produce 10 bricks/Sec</p>
-//   //           </Column>
-//   //           <Column width="1/4">
-//   //             <button onClick={app.addOven}>Buy an Oven</button>
-//   //           </Column>
-//   //         </Row>
-//   //         <Row className="row">
-//   //           <Column width="3/4">
-//   //             <h4>Workers</h4> 
-//   //             <p>Cost 20 bricks to create and Produce 3 bricks/Sec.</p>
-//   //           </Column>
-//   //           <Column width="1/4">
-//   //             <button onClick={app.addWorker}>Hire a Worker</button>
-//   //           </Column>
-//   //         </Row>
-
-//   //         <Row className="row">
-//   //           <Column width="3/4">
-//   //             <h4>Alien Workers</h4> 
-//   //             <p>Cost 100 Bricks, gives you 15 bricks/second </p>
-//   //           </Column>
-//   //           <Column width="1/4">
-//   //             <button onClick={app.addAlien}>Hire an Alien</button>
-//   //           </Column>
-//   //         </Row>
-
-//   //         <Row className="row">
-//   //           <Column width="3/4">
-//   //             <h4>Alien Transport</h4> 
-//   //             <p>Cost 300 Bricks, increases alien productivity by 20%</p>
-//   //           </Column>
-//   //           <Column width="1/4">
-//   //             <button onClick={app.addAlienTransport}>Buy an Alien Transport</button>
-//   //           </Column>
-//   //         </Row>
