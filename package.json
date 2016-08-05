@@ -1,6 +1,10 @@
 {
   "name": "incremental-game",
   "version": "1.0.0",
+  "engines":{
+    "node": "6.3.0",
+    "npm": "3.10.3"
+  },
   "description": "This project would have you reverse engineer a game that is text based, like [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/)",
   "main": "index.js",
   "scripts": {
