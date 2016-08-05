@@ -10,14 +10,14 @@ This is important because creating this game would allow you to focus mainly on 
 
 ## Specifications
 
-- [ ] As a user, I can save the game.
-- [ ] As a user, I can reload my game data.
-- [ ] I can click a thing to get more income.
-- [ ] As a user, I can "buy" items that increase the counter rate.
-- [ ] As a user, I can see the amount of "currency" I have.
-- [ ] The game increases currency acumulation rate depending on what items you have.
-- [ ] deploy web app on heroku
-- [ ]  web UI
+- [x] As a user, I can save the game.
+- [x] As a user, I can reload my game data.
+- [x] I can click a thing to get more income.
+- [x] As a user, I can "buy" items that increase the counter rate.
+- [x] As a user, I can see the amount of "currency" I have.
+- [x] The game increases currency acumulation rate depending on what items you have.
+- [x] deploy web app on heroku
+- [x]  web UI
   - Shows current income.
   - Shows passive income generation.
   - Shows clickable area.
@@ -25,7 +25,7 @@ This is important because creating this game would allow you to focus mainly on 
 
 ### Required
 
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 ---
 
