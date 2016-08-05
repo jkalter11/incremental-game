@@ -6,8 +6,7 @@ import Root from './components/root.jsx'
 
 const App = {
   start(){
-    // App.load();
-    App.reset()
+    App.load();
     App.timeout = setInterval(App.tick, 1000)
     App.render();
   },
@@ -16,16 +15,6 @@ const App = {
     clearTimeout(App.timeout)
   },
 
-  // itemDetails(){ 
-  //   [
-  //     alienDesc: "Who knew aliens would love building with rocks so much?",
-  //     workerDesc: "Reliable and sturdy, workers save the day.",
-  //     ovenDesc: "",
-  //     pickAxeDesc: "Diging up stuff faster means I can make bricks faster, right?",
-  //     redTruckDesc: "How do you make buildings faster? You get there faster.",
-  //     alienShipDesc: "Aliens are zooming everywhere."
-  //   ]
-  // },
 
   reset(){
     delete localStorage.state
@@ -36,7 +25,7 @@ const App = {
     App.state = localStorage.state ? 
       JSON.parse(localStorage.state) : {
       startedAt: (new Date).getTime(),
-      brickCount: 1000,
+      brickCount: 0,
       ovenCount: 0,
       pickAxeCount: 0,
       workerCount: 0,
@@ -134,8 +123,8 @@ const App = {
     return 1 + workerBPS + alienBPS;
   },
 
+//game time
   tick(){
-    // const alienProductionRate = 15
     const workerProductionRate = 3
 
     App.state.bps = App.bricksPerSecond()
@@ -144,10 +133,6 @@ const App = {
     App.save();
     App.render();
   },
-
-
-// Multipliers
-
 
 
   render(){

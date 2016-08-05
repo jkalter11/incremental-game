@@ -2,12 +2,6 @@ import React from 'react'
 import {Grid, Row, Column} from 'react-cellblock';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-//import ItemRow from "./worker.js";
-
-import EmployeeRow from './employeeRow.jsx'
-import TransportRow from './transportRow.jsx'
-
-
 export default class Root extends React.Component {
 
   render(){ 
@@ -43,16 +37,11 @@ class FooterRow extends React.Component {
     return (
       <Row>
         <Column>
-          <CopyrightInfo />
+          <p>Copyright 2016, Bricks Unlimited International</p> 
+          <p>Shaka Lee & <a href="www.rachelralston.com">Rachel Ralston</a></p>
         </Column>
       </Row>
     )
-  }
-}
-
-class CopyrightInfo extends React.Component {
-  render(){
-    return <p>Copyright 2016, Bricks Unlimited International</p> 
   }
 }
 
