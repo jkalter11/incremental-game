@@ -4,11 +4,17 @@ $body-font-color: #333
 
 =header-text()
   font-family: 'Reem Kufi', sans-serif
-  font-color: #33dd99
+  color: #000
 
 =awesome-text()
   font-family: 'Source Sans Pro', sans-serif
-  font-color: yellow
+  color: #444
+
+=itemRowStyles()
+  background-color: #fff
+  border-radius: .2em
+  margin: 15px
+  padding: 5px
 
 
 
@@ -16,7 +22,8 @@ html, body
   background-color: #eee
   
 
-
+div 
+  +awesome-text
 
 h1, h2, h3, 
   +header-text
@@ -37,14 +44,16 @@ button
   text-decoration: none
   justify-content: center
   flex-direction: column
+  margin: auto
 
 img
-    max-width: 100%;
-    display: block;
+  max-width: 100%
+  display: block
 
-
-
-
+img 
+  .itemIcons
+  max-width: 30%
+  margin: 10px auto
 
 .brickButton
   &:hover
@@ -55,6 +64,24 @@ img
     -ms-transform: scale(.95)
     -webkit-transform: scale(.95)
     transform: scale(.95)
+
+.itemRow
+  +itemRowStyles
+
+.workerstab
+  background-color: #613e61
+  padding: 5px 25px
+
+.transportstab
+  background-color: #3e6161
+  padding: 5px 25px
+
+.toolstab
+  background-color: #58613e
+  padding: 5px 25px
+
+.tab
+  color: #fff
 
 
 

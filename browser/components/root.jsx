@@ -126,22 +126,23 @@ function BodyRow(props){
         </div>
       </Column>
       <Column width="3/4">
-        <Tabs>
+        <div><Tabs>
           <TabList> 
-            <Tab className="tab"> Workers </Tab>
-            <Tab className="tab"> Transports </Tab> 
-            <Tab className="tab"> Tools </Tab> 
+            <Tab className="tab workerstab"> Workers </Tab>
+            <Tab className="tab transportstab"> Transports </Tab> 
+            <Tab className="tab toolstab"> Tools </Tab> 
           </TabList> 
-          <TabPanel>
-            <WorkersTab app={app}/>
+          <TabPanel className="tabpanel workerstab">
+            <WorkersTab className="workerstab" app={app}/>
           </TabPanel>
-          <TabPanel>
-            <TransportsTab app={app}/>
+          <TabPanel className="tabpanel transportstab">
+            <TransportsTab className="transportstab" app={app}/>
           </TabPanel>
-          <TabPanel>
-            <ToolsTab app={app}/>
+          <TabPanel className="tabpanel toolstab">
+            <ToolsTab className="toolstab" app={app}/>
           </TabPanel>
         </Tabs>
+        </div>
       </Column> 
     </Row>
   )
@@ -158,6 +159,7 @@ function WorkersTab(props){
       cost={App.workerCost}   
       onPurchase={app.addWorker} 
       desc="Reliable and sturdy, workers save the day."
+      img="/img/worker.png"
     />
     <ItemDescription 
       name="Alien"           
@@ -165,6 +167,7 @@ function WorkersTab(props){
       cost={App.alienCost}    
       onPurchase={app.addAlien} 
       desc="Who knew aliens would love building with rocks so much?"
+      img="/img/alien.png"
     />
   </div>
 }
@@ -178,13 +181,15 @@ function TransportsTab(props){
       cost={App.redTruckCost} 
       onPurchase={app.addRedTruck} 
       desc="How do you make buildings faster? You get there faster."
-    />
+      img="/img/redtruck.png"
+    /> 
     <ItemDescription 
       name="Alien Transport" 
       owned={App.state.alienTransportCount}    
       cost={App.alienTransportCost}    
       onPurchase={app.addAlienTransport} 
       desc="Aliens are zooming everywhere."
+      img="/img/ufo.png"
     />
   </div>
 }
@@ -198,6 +203,7 @@ function ToolsTab(props){
       cost={App.ovenCost} 
       onPurchase={app.addOven} 
       desc="Brick bakers bake a brick."
+      img="/img/oven.png"
     />
     <ItemDescription 
       name="Pick Axe" 
@@ -205,13 +211,14 @@ function ToolsTab(props){
       cost={App.pickAxeCost}    
       onPurchase={app.addPickAxe} 
       desc="Diging up stuff faster means I can make bricks faster, right?"
-    />
+      img="/img/pickaxe.png"
+    /> 
   </div>
 }
 
 function ItemDescription(props){
   return (
-    <Row>
+    <Row className="itemRow">
       <Column width="3/4">
         <h3>{props.name}</h3>
         <div>Owned: {props.owned}</div>
@@ -219,7 +226,10 @@ function ItemDescription(props){
         <div>{props.desc}</div>
       </Column>
       <Column width="1/4">
-        <div><button onClick={props.onPurchase}>buy</button></div>
+        <div className="itemIcons">
+        <img src={props.img}/>
+        <button onClick={props.onPurchase}>buy</button>
+        </div>
       </Column>
     </Row>
   )
