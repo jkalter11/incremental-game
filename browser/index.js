@@ -43,9 +43,7 @@ const App = {
       totalGameTime:0,
       alienCount: 0,
       alienTransportCount: 0,
-      redTruckCount: 0,
-      // employees: [],
-      // transports: []
+      redTruckCount: 0
     };
   },
 
