@@ -7,7 +7,7 @@ server.set('port', process.env.PORT || 5000);
 
 server.use(express.static(PUBLIC_DIR));
 
-server.get('/*', (request, response) => {
+server.get('/', (request, response) => {
   response.sendFile(PUBLIC_DIR+'/index.html');
 });
 
