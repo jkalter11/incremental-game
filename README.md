@@ -16,7 +16,7 @@ This is important because creating this game would allow you to focus mainly on 
 - [x] As a user, I can "buy" items that increase the counter rate.
 - [x] As a user, I can see the amount of "currency" I have.
 - [x] The game increases currency acumulation rate depending on what items you have.
-- [x] deploy web app on heroku
+- [x] deploy web app on heroku: [Check it out!](https://fast-badlands-34508.herokuapp.com/)
 - [x]  web UI
   - Shows current income.
   - Shows passive income generation.
@@ -36,20 +36,3 @@ This is important because creating this game would allow you to focus mainly on 
 
 [mit-license]: https://opensource.org/licenses/MIT
 
-
-## Development
-
-```
-# setup
-npm install
-```
-
-```
-# run the web server
-nodemon index.js
-```
-
-```
-# run webpack watch
-webpack -w
-```
