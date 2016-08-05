@@ -214,9 +214,10 @@ function ItemDescription(props){
       </Column>
       <Column width="1/4">
         <div className="itemIcons">
-        <img src={props.img}/>
-        <button onClick={props.onPurchase}>buy</button>
+          <img src={props.img}/>
         </div>
+        <button onClick={props.onPurchase}>buy</button>
+
       </Column>
     </Row>
   )
