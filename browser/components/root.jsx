@@ -34,9 +34,9 @@ export default class Root extends React.Component {
     return (
       <div>
         <Grid>
-          <HeaderRow brickCount={brickCount} bps={bps} />
-          <BodyRow app={app} />
-          <FooterRow />
+          <HeaderRow />
+          <BodyRow app={app} brickCount={brickCount} bps={bps} />
+          <div className="copyRightText"> <FooterRow /> </div> 
         </Grid>
       </div>
     )
@@ -48,43 +48,13 @@ export default class Root extends React.Component {
 
 class HeaderRow extends React.Component {
   render(){
-    const { brickCount, bps } = this.props
-
     return (
       <Row>
-        <Column width="1/4">
-          <BrickLogo />
-        </Column>
-        <Column width="3/4">
-          <PlayerStats brickCount={brickCount} bps={bps} />
-        </Column>
+       <h1>Click A Brick</h1> 
       </Row>
     )
   }
 }
-
-class PlayerStats extends React.Component {
-  render(){
-    return (
-      <div>
-        <Column width="1/2">
-          <p> Total Bricks: {this.props.brickCount}</p>
-        </Column>
-        <Column width="1/2">
-          <p> Bricks Per Second: {this.props.bps}</p>
-        </Column>
-      </div>
-    )
-  }
-}
-
-
-class BrickLogo extends React.Component {
-  render(){
-    return (<h1>Click A Brick</h1> )
-  }
-}
-
 
 class FooterRow extends React.Component {
   render(){
@@ -106,7 +76,7 @@ class CopyrightInfo extends React.Component {
 
 class BrickButton extends React.Component {
   render(){
-    return (
+    return ( 
       <div className="brickButton">
         <a href="javascript: void(null)" onClick={this.props.onClick}>
           <img src='/img/brick.png' /> 
@@ -118,12 +88,21 @@ class BrickButton extends React.Component {
 
 function BodyRow(props){
   const {app} = props
+  const {bricksPerSecond} = app
+
+  console.log(bricksPerSecond)
+
   return (
     <Row>
       <Column width="1/4">
         <div> 
-          <BrickButton onClick={app.addBrick} />        
+          <BrickButton onClick={app.addBrick} />  
+          <div>
+            <p> Total Bricks: {app.state.brickCount}</p>
+            <p> Bricks Per Second: {bricksPerSecond()}</p>
+          </div>   
         </div>
+
       </Column>
       <Column width="3/4">
         <div><Tabs>
@@ -159,6 +138,7 @@ function WorkersTab(props){
       cost={App.workerCost}   
       onPurchase={app.addWorker} 
       desc="Reliable and sturdy, workers save the day."
+      bonus="A worker can produce an additional 5 bricks per second."
       img="/img/worker.png"
     />
     <ItemDescription 
@@ -167,6 +147,7 @@ function WorkersTab(props){
       cost={App.alienCost}    
       onPurchase={app.addAlien} 
       desc="Who knew aliens would love building with rocks so much?"
+      bonus="An alien can produce an additional 15 bricks per second."
       img="/img/alien.png"
     />
   </div>
@@ -181,6 +162,7 @@ function TransportsTab(props){
       cost={App.redTruckCost} 
       onPurchase={app.addRedTruck} 
       desc="How do you make buildings faster? You get there faster."
+      bonus="A red truck increases worker productivity rate by 20%"
       img="/img/redtruck.png"
     /> 
     <ItemDescription 
@@ -189,6 +171,7 @@ function TransportsTab(props){
       cost={App.alienTransportCost}    
       onPurchase={app.addAlienTransport} 
       desc="Aliens are zooming everywhere."
+      bonus="An alien ship increases alien productivity rate by 50%"
       img="/img/ufo.png"
     />
   </div>
@@ -203,6 +186,7 @@ function ToolsTab(props){
       cost={App.ovenCost} 
       onPurchase={app.addOven} 
       desc="Brick bakers bake a brick."
+      bonus="An oven increases your active click rate by 3 bricks per click"
       img="/img/oven.png"
     />
     <ItemDescription 
@@ -211,6 +195,7 @@ function ToolsTab(props){
       cost={App.pickAxeCost}    
       onPurchase={app.addPickAxe} 
       desc="Diging up stuff faster means I can make bricks faster, right?"
+      bonus="An pick axe increases your active click rate by 5 bricks per click"
       img="/img/pickaxe.png"
     /> 
   </div>
@@ -221,9 +206,11 @@ function ItemDescription(props){
     <Row className="itemRow">
       <Column width="3/4">
         <h3>{props.name}</h3>
-        <div>Owned: {props.owned}</div>
-        <div>Cost: {props.cost}</div>
         <div>{props.desc}</div>
+        <div className="descriptionstats">
+          <div>Owned: {props.owned}  |  Cost: {props.cost}</div>
+          <div>{props.bonus} </div>
+        </div>  
       </Column>
       <Column width="1/4">
         <div className="itemIcons">

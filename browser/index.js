@@ -63,7 +63,6 @@ const App = {
 
   bpc:1,
   addBrick(){
-    console.log('addBrick clicked')
     App.state.brickCount = App.state.brickCount + App.bpc;
     App.render();
   },
@@ -73,7 +72,6 @@ const App = {
 
   workerCost: 20,
   addWorker(){
-    console.log('Hire a worker')
     if (App.state.brickCount < App.workerCost) return;
     App.state.brickCount -= App.workerCost
     App.state.workerCount++;
@@ -82,7 +80,6 @@ const App = {
 
   redTruckCost: 50,
   addRedTruck(){
-    console.log('Red Truck')
     if (App.state.brickCount < App.redTruckCost ) return;
     App.state.brickCount -= App.redTruckCost
     App.state.redTruckCount++;
@@ -91,7 +88,6 @@ const App = {
 
   alienCost: 100,
   addAlien(){
-    console.log('Alien')
     if (App.state.brickCount < App.alienCost ) return;
     App.state.brickCount -= App.alienCost
     App.state.alienCount++;
@@ -100,7 +96,6 @@ const App = {
 
   alienTransportCost: 1000,
   addAlienTransport(){
-    console.log('Alien Transport')
     if (App.state.brickCount < App.alienTransportCost ) return;
     App.state.brickCount -= App.alienTransportCost
     App.state.alienTransportCount++;
@@ -109,7 +104,6 @@ const App = {
 
   pickAxeCost: 250,
   addPickAxe(){
-    console.log('Pick Axe')
     if (App.state.brickCount < App.pickAxeCost ) return;
     App.state.brickCount -= App.pickAxeCost
     App.state.pickAxeCount++;
@@ -118,7 +112,6 @@ const App = {
 
   ovenCost: 500, 
   addOven(){
-    console.log('Oven')
     if (App.state.brickCount < App.ovenCost ) return;
     App.state.brickCount -= App.ovenCost
     App.state.ovenCount++;
@@ -132,9 +125,7 @@ const App = {
     const s = App.state;
     const bpc = App.bpc;
     const workerBPS = Math.round(
-      (s.workerCount * 5) + ((s.workerCount * 5) * (s
-
-        .redTruckCount * 0.2))
+      (s.workerCount * 5) + ((s.workerCount * 5) * (s.redTruckCount * 0.2))
     )
     const alienBPS = Math.round(
       (s.alienCount * 15) + ((s.alienCount * 15) * (s.alienTransportCount * 0.5))
@@ -146,7 +137,6 @@ const App = {
   },
 
   tick(){
-    console.log('App tick', App.state)
     // const alienProductionRate = 15
     const workerProductionRate = 3
 
@@ -171,5 +161,4 @@ window.App = App
 
 App.start();
 
-console.log('browser.js here')
 
