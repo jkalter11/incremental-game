@@ -8,7 +8,6 @@ export default class Root extends React.Component {
     const { app } =  this.props
     const { state } =  app
     const { bps, brickCount, employees, transports } = state
-    // console.log( this.props.app.state )
 
     return (
       <div>
